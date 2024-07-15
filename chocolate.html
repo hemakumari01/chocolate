@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Room</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome CSS -->
+    <style>
+        /* Your existing CSS styles */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #fff; /* White background */
+        }
+        header, footer { 
+            background: #331c02; 
+            color: #fff; 
+            text-align: center; 
+            padding: 1em 0; 
+        }
+        nav { 
+            background: #331c02; 
+            text-align: center; 
+            padding: 1em 0;
+            margin-bottom: 20px;
+            margin-top: -9em;
+        }
+        nav ul { 
+            list-style: none; 
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li { 
+            margin: 0 90px; /* Increased margin between menu items */
+        }
+        nav ul li a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: bold;
+            padding: 10px 15px;
+        }
+        nav ul li a:hover {
+            background-color: #D3B683; /* Darker background color on hover */
+        }
+        .container { 
+            max-width: 1200px; /* Limit container width */
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #fff; /* Yellow background for specials and above */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            display: flex; /* Flexbox for layout control */
+            align-items: flex-start; /* Align items at the top */
+            justify-content: flex-start; /* Align items to the left */
+            flex-direction: column; /* Stack items vertically */
+        }
+        .chocolate-room { 
+            text-align: center;
+            margin-top: -3cm; /* Adjusted top margin */
+        }
+        .chocolate-room h5 {
+            font-family: 'Great Vibes', cursive; /* Apply Great Vibes font */
+            font-size: 6em; /* Increase font size */
+            color: #ff6347; /* Different color for Chocolate World */
+            background-color: #331c02; /* Background color for contrast */
+            padding: 10px; /* Padding for styling */
+            display: inline-block; /* Ensures padding applies correctly */
+        }
+        .video-container {
+            width: 100vw; /* Full viewport width */
+            height: 50vh; /* Half viewport height */
+            position: relative; /* Ensure relative positioning */
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+        }
+        .video-container video {
+            width: 100%; /* Make video width 100% of its container */
+            height: 100%; /* Make video height 100% of its container */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            display: block; /* Ensure block display */
+        }
+        .content-wrapper {
+            display: flex; /* Use flexbox for layout control */
+            justify-content: space-between; /* Distribute items evenly */
+            padding: 20px; /* Add padding around content */
+            box-sizing: border-box; /* Include padding in width calculation */
+            margin-bottom: 20px; /* Add space below content */
+        }
+        .image-container {
+            flex: 1; /* Take up remaining space */
+            text-align: left; /* Left align image */
+            margin: 0 auto; /* Center align horizontally */
+            max-width: 50%; /* Limit image width */
+            padding: 0 20px; /* Add padding around image */
+        }
+        .image-container img {
+            width: 100%; /* Make image fill its container */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove bottom margin */
+            margin-bottom: 10px; /* Add space below each image */
+            border-radius: 8px; /* Rounded corners */
+            transition: opacity 0.3s ease; /* Smooth transition */
+        }
+        .text-container {
+            flex: 1; /* Take up remaining space */
+            padding: 0 20px; /* Add padding around text */
+        }
+        .text-container h1 {
+            font-family: 'Pacifico', cursive; /* Apply Pacifico font */
+            font-size: 3em; /* Increase font size */
+            color:#4D2D18 ; /* Different color */
+            text-align: center; /* Align text to the center */
+            margin-top: 0; /* Remove top margin */
+        }
+        .text-container p {
+            font-family: 'Arial', sans-serif; /* Change font for paragraphs */
+            font-size: 1.2em; /* Adjust font size */
+            line-height: 1.6; /* Increase line height for readability */
+            color: #333; /* Adjust text color */
+            text-align: center; /* Center align text */
+        }
+        .image-grid {
+            display: grid; /* Use grid layout */
+            grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+            gap: 20px; /* Gap between grid items */
+            margin-top: 20px; /* Space above the grid */
+            background-color: #f0e68c; /* Background color */
+            padding: 15px; /* Padding for styling */
+            justify-items: center; /* Center items horizontally */
+        }
+        .image-item {
+            display: flex; /* Use flexbox for text and image alignment */
+            flex-direction: column; /* Stack text and image vertically */
+            align-items: center; /* Center items horizontally */
+            text-align: center; /* Center align text */
+        }
+        .image-item img {
+            width: auto; /* Make images fill their grid container */
+            height: 12cm; /* Maintain aspect ratio */
+            display: block; /* Remove bottom margin */
+            border-radius: 8px; /* Rounded corners */
+            transition: opacity 0.5s ease; /* Smooth transition */
+        }
+        .image-item img:hover {
+            opacity: 0.7; /* Reduce opacity on hover */
+        }
+        .specials-heading {
+            font-family: 'Pacifico', cursive; /* Apply Pacifico font */
+            font-size: 4em; /* Increase font size */
+            color: #4D2D18; /* Different color */
+            text-align: right; /* Align text to the right */
+            margin-bottom: 20px; /* Add space below heading */
+            margin-right: 20px; /* Add margin to the right */
+            background-color: #f0e68c; /* Yellow background for specials */
+            padding: 10px; /* Padding for styling */
+            display: inline-block; /* Ensures padding applies correctly */
+        }
+        .quote-video-container {
+            display: flex; /* Use flexbox to align quote and video horizontally */
+            justify-content: space-around; /* Space out items evenly */
+            align-items: center; /* Center items vertically */
+            margin-top: 50px; /* Space above the container */
+            margin-bottom: 20px; /* Space below the container */
+            margin-left: 50px; /* Move the container to the right */
+        }
+        .quote {
+            font-family: 'Pacifico', cursive; /* Apply Pacifico font */
+            font-size: 7em; /* Increase font size */
+            color: #4D2D18; /* Different color */
+            text-align: center; /* Center align text */
+            margin: 0; /* Remove default margin */
+            flex: 1; /* Allow flexbox to adjust size */
+        }
+        .side-video-container {
+            flex: 1; /* Allow flexbox to adjust size */
+            max-width: 100%; /* Limit video container width */
+            text-align: right; /* Center align video */
+        }
+        .side-video-container video {
+            width: 100%; /* Make video fill its container */
+            height: 20cm; /* Maintain aspect ratio */
+            display: block; /* Remove default inline behavior */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add shadow */
+        }
+        /* New Section Styles */
+        #healthy-life {
+            background-color: #d8bfd8; /* Light gray background */
+            padding: 50px 20px; /* Padding around content */
+            text-align: center; /* Center align text */
+        }
+        #healthy-life h2 {
+            font-family: 'Pacifico', cursive; /* Apply Pacifico font */
+            font-size: 5em; /* Increase font size */
+            color: #4D2D18; /* Different color */
+            margin-bottom: 20px; /* Space below heading */
+        }
+        #healthy-life p {
+            font-family: 'Arial', sans-serif; /* Change font for paragraphs */
+            font-size: 2.3em; /* Adjust font size */
+            line-height: 1.6; /* Increase line height for readability */
+            color: #333; /* Adjust text color */
+        }
+        /* Contact Section Styles */
+        .contact-wrapper {
+            color: #4D2D18;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .contact-wrapper h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 5em;
+            color: #4D2D18;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .contact-info .info-item {
+            flex: 1;
+            max-width: 300px;
+            padding: 20px;
+            background-color: #D2B48C;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .contact-info .info-item:hover {
+            transform: translateY(-10px);
+        }
+        .contact-info .info-item p {
+            margin: 10px 0;
+        }
+        .contact-info .info-item a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        .contact-info .info-item a:hover {
+            color: #8e24aa;
+        }
+        .contact-info .info-item i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        footer {
+            background-color: #331c02;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="chocolate-room">
+        <h5>Chocolate World</h5>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Gifting</a></li>
+            <li><a href="#">Health Friendly</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\7234b82f1866e71f9c2bad84ba5b6c49 - Trim.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="image-container">
+                <img src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\about.jpeg" alt="Description of your image">
+            </div>
+            <div class="text-container">
+                <h1>Welcome to Chocolate World</h1>
+                <p>Welcome to the Chocolate World, a paradise for chocolate lovers. Here, you can find the finest selection of chocolates, each crafted with passion and precision. Our chocolate is made from the highest quality ingredients to ensure a rich and satisfying taste experience.</p>
+                <p>Whether you are looking for a gift, a treat for yourself, or something health-friendly, we have it all. Explore our range of products and discover the world of exquisite chocolates.</p>
+            </div>
+        </div>
+
+        <h1 class="specials-heading">Our Specials.....</h1>
+
+        <div class="image-grid">
+            <div class="image-item">
+                <a href="#">
+                    <img src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\Wicked Windmill Chocolate Cake.jpeg" alt="Image 1">
+                </a>
+                <p><b>Chocolate Cakes</b></p>
+            </div>
+            <div class="image-item">
+                <a href="#">
+                    <img src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\BethTownsendUnBaked - Etsy.jpeg" alt="Image 2">
+                </a>
+                <p><b>Chocolate Shakes</b></p>
+            </div>
+            <div class="image-item">
+                <a href="#">
+                    <img src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\Malt Chocolate Chip Cookies _ URBAN BAKES.jpeg" alt="Image 3">
+                </a>
+                <p><b>Chocolate Cookies</b></p>
+            </div>
+            <div class="image-item">
+                <a href="#">
+                    <img src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\Deliciously Dark Chocolate Cupcakes.jpeg" alt="Image 4">
+                </a>
+                <p><b>Chocolate Cupcakes</b></p>
+            </div>
+            <div class="image-item">
+                <a href="#">
+                    <img src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\Easy Amaretto Chocolate Truffles Recipe - Baker by Nature.jpeg" alt="Image 5">
+                </a>
+                <p><b>Chocolate Truffles</b></p>
+            </div>
+            <div class="image-item">
+                <a href="#">
+                    <img src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\Pink Lady Food Photographer of the Year_ The World's Leading Food Photography Awards.jpeg" alt="Image 6">
+                </a>
+                <p><b>Chocolate Icecreams</b></p>
+            </div>
+        </div>
+
+        <div class="quote-video-container">
+            <div class="quote">
+                "Yummy<br> to the <br> Last Bite"
+            </div>
+            <div class="side-video-container">
+                <video autoplay muted loop>
+                    <source src="C:\Users\dasar\OneDrive\Attachments\Desktop\html project\5ec732888dd0445078268668e7317f15 - Trim.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <!-- New Section: Healthy Life -->
+        <div id="healthy-life">
+            <h2>Healthy Life</h2>
+            <p>Discover our range of health-friendly chocolate options, designed to satisfy your sweet tooth while keeping your health in mind. Whether you're looking for sugar-free, vegan, or organic chocolates, we have delicious options that cater to every taste and dietary preference.</p>
+            <p>Indulge guilt-free in our specially curated selection and embrace a healthier lifestyle with Chocolate World.</p>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-wrapper">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Rajahmundry India</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <p><a href="tel:+1234567890">+1234567890</a></p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:info@chocolateworld.com">info@chocolateworld.com</a></p>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-facebook"></i>
+                    <p><a href="https://www.facebook.com/YourChocolateWorldPage" target="_blank">Chocolate World on Facebook</a></p>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-instagram"></i>
+                    <p><a href="https://www.instagram.com/YourChocolateWorldPage" target="_blank">Chocolate World on Instagram</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Chocolate World. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
